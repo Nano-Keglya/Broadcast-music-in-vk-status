@@ -1,6 +1,4 @@
-import json
-import requests
-import time
+import json, requests, time
 
 print("Запуск")
 
@@ -9,9 +7,9 @@ with open("config.json", "r") as config:
 
 session = requests.Session()
 
-def main(audio, access_token=config['access_token'], v='5.120'):
+def main(audio=config['audio'], access_token=config['access_token'], v='5.131'):
     session.get(f"https://api.vk.com/method/audio.setBroadcast?audio={audio}&access_token={access_token}&v={v}")
-    time.sleep(60) # Обновление статуса каждую минуту
+    time.sleep(60) # Обновление статуса каждую минуту (желательно выставить время музыки)
 
 while True:
-    main(config['audio'])
+    main()
